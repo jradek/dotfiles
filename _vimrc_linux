@@ -1,0 +1,132 @@
+" Use Vim settings, rather then Vi settings. This setting must be as early as
+" possible, as it has side effects.
+set nocompatible
+
+" Switch syntax highlighting on, when the terminal has colors
+" Also switch on highlighting the last used search pattern.
+if (&t_Co > 2 || has("gui_running")) && !exists("syntax_on")
+    syntax on
+endif
+
+" Bundles {{{1
+"
+filetype off "required by Vundle
+set rtp+=~/.vim/bundle/Vundle.vim/
+
+call vundle#begin()
+
+" Let Vundle manage Vundle
+Plugin 'gmarik/Vundle.vim'
+
+" Define bundles via Github repos
+
+" color shemes
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'jonathanfilip/vim-lucius'
+Plugin 'croaky/vim-colors-github'
+
+" fancy status line
+Plugin 'bling/vim-airline'
+
+Plugin 'kien/ctrlp.vim'
+
+call vundle#end()
+
+" }}}1
+
+filetype plugin indent on
+
+
+" Options {{{1
+" tabs and spaces
+set tabstop=4
+set shiftwidth=4
+set shiftround
+set expandtab
+
+set laststatus=2    " Always show the statusline
+
+set encoding=utf-8  " Necessary to show Unicode glyphs
+set fileencodings=utf-8
+set fileformats=unix,dos,mac
+
+" Display extra whitespace
+set list listchars=tab:»·,trail:·,nbsp:·,eol:¬
+
+" Color scheme {{{2
+
+" colorscheme github
+" highlight NonText guibg=#060606
+" highlight Folded guibg=#0A0A0A guifg=#9090D0
+
+colorscheme industry
+
+
+" colorscheme moria
+
+" set t_Co=256
+" colorscheme moria
+
+" colorscheme lucius
+
+" }}}2
+
+
+" Make it obvious where 100 characters is
+set textwidth=100
+set colorcolumn=+1
+
+set number          " show line numbers
+set numberwidth=4
+
+set smartcase       " case handling for search terms
+set smartindent     " smart indention when starting new line
+
+set incsearch
+set nohlsearch
+set ruler           " show cursor at bottom
+set cursorline      " highlight current line
+
+
+set foldmethod=syntax
+set foldlevelstart=20
+
+set linebreak       " display setting: break long lines, but do not insert EOL
+
+set showcmd
+
+set wildmode=list:longest,list:full
+set wildignore+=*.o,*.obj,*.so,*.a
+
+
+" GUI settings {{{1
+if has("gui_running")
+    set guioptions-=T
+    set guioptions-=r
+    set guioptions-=m
+    set guifont=Monospace\ 11
+
+    colorscheme lucius
+    LuciusDark
+endif
+
+" airline statusbar settings {{{1
+let g:airline_powerline_fonts=1
+let g:airline#extensions#whitespace#enabled = 1
+let g:airline#extensions#whitespace#checks = ['trailing']
+
+
+" Special files {{{1
+
+autocmd FileType text setlocal textwidth=80
+
+" special Makefile handling (tabs)
+autocmd BufEnter ?akefile* set noexpandtab
+autocmd BufEnter ?akefile* set softtabstop=0
+autocmd BufLeave ?akefile* set expandtab
+autocmd BufLeave ?akefile* set softtabstop=2
+
+" disable beeping/flashing in GUI
+autocmd GUIEnter * set noerrorbells visualbell t_vb=
+
+" }}} vim: foldmethod=marker

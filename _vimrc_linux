@@ -25,6 +25,8 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'jonathanfilip/vim-lucius'
 Plugin 'croaky/vim-colors-github'
 
+Plugin 'scrooloose/nerdtree'
+
 " fancy status line
 Plugin 'bling/vim-airline'
 
@@ -129,4 +131,10 @@ autocmd BufLeave ?akefile* set softtabstop=2
 " disable beeping/flashing in GUI
 autocmd GUIEnter * set noerrorbells visualbell t_vb=
 
-" }}} vim: foldmethod=marker
+" }}}1 
+
+" some toggleables
+
+nnoremap <F5> :NERDTreeToggle<CR>
+
+" vim: foldmethod=marker

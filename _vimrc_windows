@@ -1,3 +1,8 @@
+" When started as "evim", evim.vim will already have done these settings.
+if v:progname =~? "evim"
+  finish
+endif
+
 " Use Vim settings, rather then Vi settings. This setting must be as early as
 " possible, as it has side effects.
 set nocompatible
@@ -11,7 +16,10 @@ endif
 " Bundles {{{1
 
 filetype off "required by Vundle
-set rtp+=~/.vim/bundle/Vundle.vim/
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+set rtp+=D:/vim/vimfiles/bundle/Vundle.vim/
+let path='D:/vim/vimfiles/bundle'
 
 call vundle#begin()
 
@@ -30,11 +38,12 @@ Plugin 'scrooloose/nerdtree'
 " fancy status line
 Plugin 'bling/vim-airline'
 
-Plugin 'kien/ctrlp.vim'
+" Plugin 'kien/ctrlp.vim'
 
 call vundle#end()            " required
 
 " }}}1
+
 
 " Enable file type detection.
 " Also load indent files, to automatically do language-dependent indenting.
@@ -62,7 +71,7 @@ set list listchars=tab:»·,trail:·,nbsp:·,eol:¬
 " highlight NonText guibg=#060606
 " highlight Folded guibg=#0A0A0A guifg=#9090D0
 
-colorscheme industry
+colorscheme desert
 
 
 " colorscheme moria
@@ -101,16 +110,23 @@ set showcmd
 set wildmode=list:longest,list:full
 set wildignore+=*.o,*.obj,*.so,*.a
 
+set backspace=indent,eol,start  " allow backspacing over everything in insert mode
+set noswapfile
+"}}}1
+
 
 " GUI settings {{{1
 if has("gui_running")
     set guioptions-=T
     set guioptions-=r
     set guioptions-=m
-    set guifont=Monospace\ 11
 
     colorscheme lucius
-    LuciusDark
+
+    if has("win32")
+        set guifont=Lucida_Console:h10
+        LuciusDarkLowContrast
+    endif
 endif
 
 " airline statusbar settings {{{1
@@ -118,10 +134,40 @@ let g:airline_powerline_fonts=1
 let g:airline#extensions#whitespace#enabled = 1
 let g:airline#extensions#whitespace#checks = ['trailing']
 
+" Enable the list of buffers
+let g:airline#extensions#tabline#enabled = 1
+
+" Show just the filename
+let g:airline#extensions#tabline#fnamemod = ':t'
+
+
+
+if has("vms")
+  set nobackup  " do not keep a backup file, use versions instead
+else
+  set backup    " keep a backup file
+  set backupdir=D:/temp
+endif
+
+
+" For Win32 GUI: remove 't' flag from 'guioptions': no tearoff menu entries
+" let &guioptions = substitute(&guioptions, "t", "", "g")
+
+" Don't use Ex mode, use Q for formatting
+map Q gq
+
+" CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
+" so that you can undo CTRL-U after inserting a line break.
+inoremap <C-U> <C-G>u<C-U>
+
+" In many terminal emulators the mouse works just fine, thus enable it.
+if has('mouse')
+  set mouse=a
+endif
 
 " Special files {{{1
 
-autocmd FileType text setlocal textwidth=80
+autocmd FileType text setlocal textwidth=78
 
 " special Makefile handling (tabs)
 autocmd BufEnter ?akefile* set noexpandtab
@@ -132,9 +178,30 @@ autocmd BufLeave ?akefile* set softtabstop=2
 " disable beeping/flashing in GUI
 autocmd GUIEnter * set noerrorbells visualbell t_vb=
 
-" }}}1
 
-" some toggleables
+" Put these in an autocmd group, so that we can delete them easily.
+augroup vimrcEx
+au!
+
+" For all text files set 'textwidth' to 78 characters.
+autocmd FileType text setlocal textwidth=78
+
+" When editing a file, always jump to the last known cursor position.
+" Don't do it when the position is invalid or when inside an event handler
+" (happens when dropping a file on gvim).
+" Also don't do it when the mark is in the first line, that is the default
+" position when opening a file.
+autocmd BufReadPost *
+\ if line("'\"") > 1 && line("'\"") <= line("$") |
+\   exe "normal! g`\"" |
+\ endif
+
+augroup END
+
+"}}}1
+"
+"
+"" some toggleables
 
 nnoremap <F5> :NERDTreeToggle<CR>
 

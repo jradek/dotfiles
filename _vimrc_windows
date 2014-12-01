@@ -33,7 +33,11 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'jonathanfilip/vim-lucius'
 Plugin 'croaky/vim-colors-github'
 
+" file explorer
 Plugin 'scrooloose/nerdtree'
+
+" buffer explorer
+Plugin 'jeetsukumaran/vim-buffergator'
 
 " fancy status line
 Plugin 'bling/vim-airline'
@@ -71,15 +75,18 @@ set list listchars=tab:»·,trail:·,nbsp:·,eol:¬
 " highlight NonText guibg=#060606
 " highlight Folded guibg=#0A0A0A guifg=#9090D0
 
-colorscheme desert
+if has("win32")
+    colorscheme desert
+elseif has("unix")
+    colorscheme industrial
 
+    " colorscheme moria
 
-" colorscheme moria
+    " set t_Co=256
+    " colorscheme moria
 
-" set t_Co=256
-" colorscheme moria
-
-" colorscheme lucius
+    " colorscheme lucius
+endif
 
 " }}}2
 
@@ -93,6 +100,7 @@ set numberwidth=4
 
 set smartcase       " case handling for search terms
 set smartindent     " smart indention when starting new line
+set showmatch       " Show matching brackets.
 
 set incsearch
 set nohlsearch
@@ -130,7 +138,7 @@ if has("gui_running")
 endif
 
 " airline statusbar settings {{{1
-let g:airline_powerline_fonts=1
+let g:airline_powerline_fonts=0
 let g:airline#extensions#whitespace#enabled = 1
 let g:airline#extensions#whitespace#checks = ['trailing']
 
@@ -145,13 +153,12 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 if has("vms")
   set nobackup  " do not keep a backup file, use versions instead
 else
-  set backup    " keep a backup file
-  set backupdir=D:/temp
+  if has("win32")
+      set backup    " keep a backup file
+      set backupdir=D:/temp
+  endif
 endif
 
-
-" For Win32 GUI: remove 't' flag from 'guioptions': no tearoff menu entries
-" let &guioptions = substitute(&guioptions, "t", "", "g")
 
 " Don't use Ex mode, use Q for formatting
 map Q gq
@@ -169,11 +176,10 @@ endif
 
 autocmd FileType text setlocal textwidth=78
 
-" special Makefile handling (tabs)
-autocmd BufEnter ?akefile* set noexpandtab
-autocmd BufEnter ?akefile* set softtabstop=0
-autocmd BufLeave ?akefile* set expandtab
-autocmd BufLeave ?akefile* set softtabstop=2
+" in makefiles, don't expand tabs to spaces, since actual tab characters are
+" needed, and have indentation at 8 chars to be sure that all indents are tabs
+" (despite the mappings later):
+autocmd FileType make set noexpandtab shiftwidth=4 tabstop=4 softtabstop=0
 
 " disable beeping/flashing in GUI
 autocmd GUIEnter * set noerrorbells visualbell t_vb=
@@ -199,10 +205,31 @@ autocmd BufReadPost *
 augroup END
 
 "}}}1
-"
-"
+
+
+
+"" mappings
+
+" remap esc i.e. leaving the insert mode
+inoremap <ESC> <nop>
+inoremap jk <ESC>
+
+" Get off my lawn: disable cursor keys to learn the hard way!
+nnoremap <Left> :echoe "Use h"<CR>
+nnoremap <Right> :echoe "Use l"<CR>
+nnoremap <Up> :echoe "Use k"<CR>
+nnoremap <Down> :echoe "Use j"<CR>
+
+
+" Move to the next buffer
+nmap <leader>l :bnext<CR>
+
+" Move to the previous buffer
+nmap <leader>h :bprevious<CR>
+
 "" some toggleables
 
+nnoremap <F3> :BuffergatorToggle<CR>
 nnoremap <F5> :NERDTreeToggle<CR>
 
 " vim: foldmethod=marker

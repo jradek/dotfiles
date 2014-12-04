@@ -28,7 +28,8 @@ if s:MyConfiguration == 'Work_Desktop'
     set rtp+=D:/vim/vimfiles/bundle/Vundle.vim/
     let path='D:/vim/vimfiles/bundle'
 elseif s:MyConfiguration == 'Work_Notebook'
-
+    set rtp+=~/Vim/vimfiles/bundle/Vundle.vim/
+    let path='~/Vim/vimfiles/bundle'
 endif
 
 call vundle#begin()

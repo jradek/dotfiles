@@ -30,6 +30,8 @@ if s:MyConfiguration == 'Work_Desktop'
 elseif s:MyConfiguration == 'Work_Notebook'
     set rtp+=~/Vim/vimfiles/bundle/Vundle.vim/
     let path='~/Vim/vimfiles/bundle'
+elseif s:MyConfiguration == 'Private_Notebook'
+    set rtp+=~/.vim/bundle/Vundle.vim/
 endif
 
 call vundle#begin()
@@ -89,7 +91,7 @@ set list listchars=tab:»·,trail:·,nbsp:·,eol:¬
 if has("win32")
     colorscheme desert
 elseif has("unix")
-    colorscheme industrial
+    colorscheme industry
 
     " colorscheme moria
 

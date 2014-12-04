@@ -3,6 +3,12 @@ if v:progname =~? "evim"
   finish
 endif
 
+" toogle configurtion, possible values
+" * 'Work_Desktop'      Win7
+" * 'Work_Notebook'     Win8
+" * 'Private_Notebook'  Debian
+let s:MyConfiguration = 'Work_Desktop'
+
 " Use Vim settings, rather then Vi settings. This setting must be as early as
 " possible, as it has side effects.
 set nocompatible
@@ -17,9 +23,13 @@ endif
 
 filetype off "required by Vundle
 " set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-set rtp+=D:/vim/vimfiles/bundle/Vundle.vim/
-let path='D:/vim/vimfiles/bundle'
+
+if s:MyConfiguration == 'Work_Desktop'
+    set rtp+=D:/vim/vimfiles/bundle/Vundle.vim/
+    let path='D:/vim/vimfiles/bundle'
+elseif s:MyConfiguration == 'Work_Notebook'
+
+endif
 
 call vundle#begin()
 
@@ -91,8 +101,7 @@ endif
 " }}}2
 
 
-" Make it obvious where 100 characters is
-set textwidth=100
+set textwidth=100   " Make it obvious where 100 characters is
 set colorcolumn=+1
 
 set number          " show line numbers
@@ -107,7 +116,6 @@ set nohlsearch
 set ruler           " show cursor at bottom
 set cursorline      " highlight current line
 
-
 set foldmethod=syntax
 set foldlevelstart=20
 
@@ -115,11 +123,11 @@ set linebreak       " display setting: break long lines, but do not insert EOL
 
 set showcmd
 
+set wildmenu
 set wildmode=list:longest,list:full
 set wildignore+=*.o,*.obj,*.so,*.a
 
 set backspace=indent,eol,start  " allow backspacing over everything in insert mode
-set noswapfile
 "}}}1
 
 
@@ -147,17 +155,31 @@ let g:airline#extensions#tabline#enabled = 1
 
 " Show just the filename
 let g:airline#extensions#tabline#fnamemod = ':t'
+"}}}1
 
 
-
+" backups {{{1
 if has("vms")
-  set nobackup  " do not keep a backup file, use versions instead
+    set nobackup  " do not keep a backup file, use versions instead
 else
-  if has("win32")
-      set backup    " keep a backup file
-      set backupdir=D:/temp
-  endif
+    if s:MyConfiguration == 'Work_Desktop'
+        " use backups
+        " source
+        "   http://stackoverflow.com/a/15317146
+        set backup
+        set writebackup
+        set backupdir=D:/vim/backup//
+
+        " Use a specified swap folder
+        " source
+        "   http://stackoverflow.com/a/15317146
+        set directory=D:/vim/swap//
+    else
+        set nobackup
+        set noswapfile
+    endif
 endif
+"}}}1
 
 
 " Don't use Ex mode, use Q for formatting
@@ -173,16 +195,21 @@ if has('mouse')
 endif
 
 " Special files {{{1
-
-autocmd FileType text setlocal textwidth=78
+augroup MyCommands
+au!
 
 " in makefiles, don't expand tabs to spaces, since actual tab characters are
 " needed, and have indentation at 8 chars to be sure that all indents are tabs
 " (despite the mappings later):
 autocmd FileType make set noexpandtab shiftwidth=4 tabstop=4 softtabstop=0
 
+" Enforce markdown for md files instead of Modula-2
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+
 " disable beeping/flashing in GUI
 autocmd GUIEnter * set noerrorbells visualbell t_vb=
+
+augroup END
 
 
 " Put these in an autocmd group, so that we can delete them easily.

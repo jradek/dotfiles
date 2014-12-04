@@ -207,6 +207,8 @@ autocmd FileType make set noexpandtab shiftwidth=4 tabstop=4 softtabstop=0
 " Enforce markdown for md files instead of Modula-2
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
+autocmd BufNewFile,BufReadPost *.reqif set filetype=xml
+
 " disable beeping/flashing in GUI
 autocmd GUIEnter * set noerrorbells visualbell t_vb=
 
@@ -259,5 +261,15 @@ nmap <leader>h :bprevious<CR>
 
 nnoremap <F3> :BuffergatorToggle<CR>
 nnoremap <F5> :NERDTreeToggle<CR>
+
+" functions {{{1
+
+" remove trailing white spaces
+function! TrimWhiteSpace()
+    %s/\s\+$//e
+endfunction
+
+"}}}1
+"
 
 " vim: foldmethod=marker

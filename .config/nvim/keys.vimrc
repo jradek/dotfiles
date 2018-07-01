@@ -5,10 +5,8 @@ noremap <Left> :echoe "use h"
 noremap <Right> :echoe "use l"
 
 "This unsets the "last search pattern" register by hitting return
-nnoremap <CR> :noh<CR><CR>
+nnoremap <C-L> :noh<CR><C-L>
 
-" move to next buffer
-" nmap <leader>l :bnext<CR>
-
-" move to next buffer
-" nmap <leader>h :bprevious<CR>
+" map : to ; because it is far easier to type and ; isn't used that often (backward search in current line)
+nnoremap ; :
+nnoremap : ;

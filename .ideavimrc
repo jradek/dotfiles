@@ -1,0 +1,18 @@
+let mapleader = "\"
+
+set number
+set showmode
+set relativenumber
+
+set visualbell
+
+set incsearch
+set hlsearch
+
+nnoremap <C-L> :noh<CR><C-L>
+nnoremap ; :
+nnoremap : ;
+
+nnoremap <leader>w :w<CR>
+
+nnoremap <Space> :action AceAction<CR>

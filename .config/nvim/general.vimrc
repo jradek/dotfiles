@@ -17,7 +17,7 @@ set list listchars=tab:»·,trail:·,nbsp:·,eol:¬
 
 " color scheme stuff
 set t_Co=256 " Explicitly tell vim that the terminal supports 256 colors
-let base16colorspace=256
+"let base16colorspace=256
 set background=dark
 colorscheme gruvbox
 
@@ -32,7 +32,6 @@ set showmatch       " Show matching brackets.
 
 set incsearch
 set hlsearch
-set incsearch
 set ruler           " show cursor at bottom
 set cursorline      " highlight current line
 

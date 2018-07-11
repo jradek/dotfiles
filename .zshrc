@@ -65,10 +65,11 @@ plugins=(git osx vi-mode)
 
 source $ZSH/oh-my-zsh.sh
 
+#################################################################################
+# User configuration
+
 # see https://github.com/rupa/z
 source $HOME/install/z/z.sh
-
-# User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -81,6 +82,10 @@ source $HOME/install/z/z.sh
 # else
 #   export EDITOR='mvim'
 # fi
+export EDITOR='nvim'
+# faster mode switch for vi: KEYTIMEOUT is in hundredths of a second
+#   https://www.johnhawthorn.com/2012/09/vi-escape-delays/
+export KEYTIMEOUT=1
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"

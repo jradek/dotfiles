@@ -1,0 +1,157 @@
+{
+    // "editor.fontSize": 12,
+    "editor.fontSize": 16,
+
+    "editor.fontFamily": "DejaVu Sans Code",
+    "editor.fontLigatures": true,
+
+    "editor.wordWrap": "on",
+    "editor.cursorBlinking": "solid",
+    "editor.renderWhitespace": "all",
+    "editor.insertSpaces": true,
+    "editor.detectIndentation": true,
+    "files.trimTrailingWhitespace": false,
+    "editor.lineNumbers": "relative",
+
+    "workbench.editor.showTabs": true,
+
+    "terminal.integrated.fontSize": 14,
+    "telemetry.enableTelemetry": false,
+    "files.associations": {
+        "*.cu": "cpp",
+        "*.pyx": "py"
+    },
+
+    "[markdown]": {
+      "editor.wordWrap": "on",
+      "editor.quickSuggestions": false,
+      "editor.tabSize": 4
+    },
+    "[DOT]": {
+      "editor.tabSize": 2
+    },
+
+    "markdownlint.config": {
+      "MD013": false,
+      "MD007": { "indent": 4 }
+    },
+
+    // standalone file in HTML5 format
+    "pandoc.htmlOptString": "-s -t html5",
+
+    // ignore special latex stuff for spell check
+    "cSpell.ignoreRegExpList": [
+    "\\\\\\w*(\\[.*?\\])?(\\{.*?\\})?",
+    "\\$.+?\\$"
+    ],
+
+    // Latex
+    "latex-workshop.latex.autoBuild.onSave.enabled": false,
+    "latex-workshop.latex.autoBuild.onTexChange.enabled": false,
+    "latex-workshop.chktex.enabled": true,
+
+    "latex-workshop.latex.tools": [
+      {
+        "command": "latexmk",
+        "args": [
+          "-synctex=1",
+          "-interaction=nonstopmode",
+          "-file-line-error",
+          "-pdf",
+          "%DOC%"
+        ],
+        "name": "Step 1: latexmk"
+      }
+    ],
+    "latex-workshop.latex.recipes": [
+      {
+        "name": "toolchain",
+        "tools": [
+          "Step 1: latexmk"
+        ]
+      }
+    ],
+    "latex-workshop.view.pdf.viewer": "tab",
+
+    // CSV
+    "csv-preview.separator": ";",
+    "csv-preview.theme": "light",
+
+    "keyboard.touchbar.enabled": false,
+
+    "workbench.colorTheme": "Base16 Light Google",
+
+    "java.errors.incompleteClasspath.severity": "ignore",
+    "cSpell.userWords": [
+      "commenters",
+      "dataset",
+      "mutex",
+      "mutexes",
+      "polysemy",
+      "preprocess",
+      "preprocessed",
+      "subproblem",
+      "unproblematic",
+      "untagged",
+      "youtube"
+    ],
+    "extensions.ignoreRecommendations": false,
+    "cSpell.language": "en",
+    "git.confirmSync": false,
+
+    // gitlens
+    "gitlens.advanced.messages": {
+      "suppressShowKeyBindingsNotice": true
+    },
+    "gitlens.historyExplorer.enabled": true,
+    "gitlens.currentLine.enabled": false,
+    "gitlens.gitExplorer.files.layout": "auto",
+    "editor.multiCursorModifier": "alt",
+    "vsicons.presets.foldersAllDefaultIcon": true,
+
+    // VIM
+    "vim.normalModeKeyBindingsNonRecursive": [
+      {
+        "before": [";"],
+        "after": [":"]
+      },
+      {
+        "before": [":"],
+        "after": [";"]
+      },
+      // {
+      //   "before": ["<C-j>"],
+      //   "after": ["<Esc>"]
+      // },
+      {
+        "before":["<C-l>"],
+          "commands": [
+            {
+              "command": ":nohl",
+            }
+          ]
+      },
+      {
+        "before": ["leader", "w"],
+          "commands": [
+            {
+              "command": "workbench.action.files.save",
+            }
+          ]
+      },
+    ],
+    "vim.incsearch": true,
+    "vim.hlsearch": true,
+    "vim.cursorStylePerMode" : {
+      "normal": "normal",
+      "insert": "line-thin",
+      "replace": "block-outline"
+    },
+    "vim.disableExtension": true,
+    "vim.easymotion": true,
+    "workbench.startupEditor": "newUntitledFile",
+    "workbench.iconTheme": "vscode-icons",
+
+    // PYTHON
+    "python.linting.mypyEnabled": true,
+  }

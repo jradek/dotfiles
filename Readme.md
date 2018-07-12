@@ -11,7 +11,15 @@
 
 * Open nvim and call ```:PlugInstall```
 
-## z - jump around tool
+## fzf - fuzzy file search
 
-* [tool link](https://github.com/rupa/z)
+* [tool link](https://github.com/junegunn/fzf)
 * check the respective section in ```.zshrc```
+
+## VS Code config
+
+* In file `settings.json`
+* actual storage location depends on OS
+    * Windows: `%APPDATA%\Code\User\settings.json`
+    * Mac OS: `$HOME/Library/Application Support/Code/User/settings.json`
+

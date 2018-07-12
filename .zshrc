@@ -68,9 +68,6 @@ source $ZSH/oh-my-zsh.sh
 #################################################################################
 # User configuration
 
-# see https://github.com/rupa/z
-source $HOME/install/z/z.sh
-
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
@@ -103,3 +100,5 @@ export KEYTIMEOUT=1
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
 unsetopt share_history
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

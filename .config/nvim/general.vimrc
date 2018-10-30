@@ -2,6 +2,8 @@ syntax on
 
 filetype plugin indent on
 
+language en_US
+
 set tabstop=4
 set shiftwidth=4
 set shiftround

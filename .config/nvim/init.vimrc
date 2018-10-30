@@ -13,11 +13,12 @@ Plug 'Yggdroot/indentLine'  " indention lines
 Plug 'vim-airline/vim-airline'
 Plug 'udalov/kotlin-vim'
 Plug 'bronson/vim-trailing-whitespace'
-Plug 'tpope/vim-markdown', {'for': 'markdown'}   " markdown synatx highlight
+Plug 'tpope/vim-markdown', {'for': 'markdown'}   " markdown syntax highlight
 
 Plug 'lifepillar/vim-solarized8'
 
 Plug 'easymotion/vim-easymotion'
+Plug 'tpope/vim-commentary'  "commenting with gcc command
 
 " Initialize plugin system
 call plug#end()

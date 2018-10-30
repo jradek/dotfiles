@@ -22,4 +22,5 @@
 * actual storage location depends on OS
     * Windows: `%APPDATA%\Code\User\settings.json`
     * Mac OS: `$HOME/Library/Application Support/Code/User/settings.json`
+* Keybindings in file `keybindings.json`
 

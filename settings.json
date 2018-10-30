@@ -1,8 +1,5 @@
 {
-    // "editor.fontSize": 12,
-    "editor.fontSize": 16,
-
-    "editor.fontFamily": "DejaVu Sans Code",
+  "editor.fontFamily": "Fira Code, monospace",
     "editor.fontLigatures": true,
 
     "editor.wordWrap": "on",
@@ -10,12 +7,14 @@
     "editor.renderWhitespace": "all",
     "editor.insertSpaces": true,
     "editor.detectIndentation": true,
-    "files.trimTrailingWhitespace": false,
+    "files.trimTrailingWhitespace": true,
     "editor.lineNumbers": "relative",
+    // "editor.lineNumbers": "interval",
 
     "workbench.editor.showTabs": true,
 
-    "terminal.integrated.fontSize": 14,
+    "terminal.integrated.fontSize": 11,
+    // "terminal.integrated.fontSize": 15,
     "telemetry.enableTelemetry": false,
     "files.associations": {
         "*.cu": "cpp",
@@ -30,6 +29,10 @@
     "[DOT]": {
       "editor.tabSize": 2
     },
+    "[html]": {
+      "editor.insertSpaces": true,
+      "editor.tabSize": 2
+    },
 
     "markdownlint.config": {
       "MD013": false,
@@ -38,6 +41,7 @@
 
     // standalone file in HTML5 format
     "pandoc.htmlOptString": "-s -t html5",
+    "pandoc.pdfOptString": "-V geometry:margin=2.5cm,right=2.5cm",
 
     // ignore special latex stuff for spell check
     "cSpell.ignoreRegExpList": [
@@ -79,7 +83,7 @@
 
     "keyboard.touchbar.enabled": false,
 
-    "workbench.colorTheme": "Base16 Light Google",
+    "workbench.colorTheme": "Gruvbox Dark (Hard)",
 
     "java.errors.incompleteClasspath.severity": "ignore",
     "cSpell.userWords": [
@@ -96,7 +100,6 @@
       "youtube"
     ],
     "extensions.ignoreRecommendations": false,
-    "cSpell.language": "en",
     "git.confirmSync": false,
 
     // gitlens
@@ -140,13 +143,19 @@
           ]
       },
     ],
+    "vim.insertModeKeyBindingsNonRecursive": [
+      {
+        // skip one char left in insert mode because
+        // of auto completion
+        "before": ["j","j"],
+        "after": ["<right>"]
+      }
+    ],
     "vim.incsearch": true,
     "vim.hlsearch": true,
-    "vim.cursorStylePerMode" : {
-      "normal": "normal",
-      "insert": "line-thin",
-      "replace": "block-outline"
-    },
+    "vim.cursorStylePerMode.normal" : "normal",
+    "vim.cursorStylePerMode.insert" : "line-thin",
+    "vim.cursorStylePerMode.replace" : "block-outline",
     "vim.disableExtension": true,
     "vim.easymotion": true,
     "workbench.startupEditor": "newUntitledFile",
@@ -154,4 +163,17 @@
 
     // PYTHON
     "python.linting.mypyEnabled": true,
+    "cSpell.language": "en,de",
+    "window.zoomLevel": 0,
+    "diffEditor.ignoreTrimWhitespace": true,
+
+    "FSharp.disableFailedProjectNotifications":true,
+
+    // Clojure
+    "calva.fmt.autoAdjustIndentOnNewLines": false,
+    "zenMode.hideStatusBar": false,
+    "workbench.fontAliasing": "auto",
+    "files.autoSave": "off",
+    "editor.fontSize": 11,
+
   }

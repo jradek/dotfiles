@@ -1,179 +1,279 @@
 {
+  // ************
+  // ** EDITOR **
+  // ************
+
   "editor.fontFamily": "Fira Code, monospace",
-    "editor.fontLigatures": true,
+  "editor.fontLigatures": true,
+  "editor.wordWrap": "on",
+  "editor.cursorBlinking": "solid",
+  "editor.renderWhitespace": "all",
+  "editor.insertSpaces": true,
+  "editor.detectIndentation": true,
+  "editor.multiCursorModifier": "ctrlCmd",
+  "editor.suggestSelection": "first",
+  "editor.fontSize": 15, // 15
+  "editor.minimap.enabled": false,
 
+  // ***************
+  // ** WORKBENCH **
+  // ***************
+
+  "files.autoSaveDelay": 1000,
+  "files.autoSave": "onWindowChange",
+  "files.trimTrailingWhitespace": true,
+  "files.exclude":{
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/node_modules": true,
+    "**/__pycache__": true
+  },
+
+  "workbench.editor.showTabs": false,
+  "workbench.activityBar.visible": true,
+  "workbench.fontAliasing": "auto",
+  "workbench.startupEditor": "newUntitledFile",
+  "workbench.colorCustomizations": {
+    "statusBar.background": "#0059ffa4",
+    "[Cobalt2]": {"gitDecoration.ignoredResourceForeground": "#706e6e"}
+  },
+  "workbench.editor.labelFormat": "short",
+
+  "terminal.integrated.fontSize": 15,
+
+  "telemetry.enableTelemetry": false,
+  "files.associations": {
+    "*.cu": "cpp",
+    "*.pyx": "py"
+  },
+  "[asciidoc]": {
     "editor.wordWrap": "on",
-    "editor.cursorBlinking": "solid",
-    "editor.renderWhitespace": "all",
+    "editor.quickSuggestions": true,
+    "editor.fontFamily": "'Courier Prime', Menlo, Monaco, monospace",
+    "editor.fontSize": 17,
+    "editor.fontLigatures": false
+  },
+  "[html]": {
     "editor.insertSpaces": true,
-    "editor.detectIndentation": true,
-    "files.trimTrailingWhitespace": true,
-    "editor.lineNumbers": "relative",
-    // "editor.lineNumbers": "interval",
+    "editor.tabSize": 2,
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.tabSize": 2,
+    "editor.formatOnSave": true
+  },
+  "[latex]": {
+    "editor.fontFamily": "'Courier Prime', Menlo, Monaco, monospace",
+    "editor.fontSize": 17,
+    "editor.fontLigatures": false
+  },
+  "[markdown]": {
+    "editor.fontFamily": "'Courier Prime', Menlo, Monaco, monospace",
+    "editor.fontLigatures": false,
+    "editor.fontSize": 17,
+    "editor.wordWrap": "on",
+    "editor.quickSuggestions": false,
+    "editor.tabSize": 4
+  },
+  "[plaintext]": {
+    "editor.fontFamily": "'Courier Prime', Menlo, Monaco, monospace",
+    "editor.fontSize": 17,
+    "editor.fontLigatures": false
+  },
+  "[python]": {
+    "editor.formatOnSave": true,
+  },
+  "[yaml]": {
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2,
+    "editor.fontSize": 16,
+  },
+  "markdownlint.config": {
+    "MD013": false,
+    "MD007": { "indent": 4 }
+  },
 
-    "workbench.editor.showTabs": true,
+  // standalone file in HTML5 format
+  "pandoc.htmlOptString": "-s -t html5",
+  "pandoc.pdfOptString": "-V geometry:margin=2.5cm,right=2.5cm",
 
-    "terminal.integrated.fontSize": 11,
-    // "terminal.integrated.fontSize": 15,
-    "telemetry.enableTelemetry": false,
-    "files.associations": {
-        "*.cu": "cpp",
-        "*.pyx": "py"
+  // ignore special latex stuff for spell check
+  "cSpell.ignoreRegExpList": ["\\\\\\w*(\\[.*?\\])?(\\{.*?\\})?", "\\$.+?\\$"],
+
+  // Latex
+  "latex-workshop.chktex.enabled": true,
+
+  "latex-workshop.latex.tools": [
+    {
+      "command": "latexmk",
+      "args": [
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-file-line-error",
+        "-pdf",
+        "%DOC%"
+      ],
+      "name": "Step 1: latexmk"
+    }
+  ],
+  "latex-workshop.latex.recipes": [
+    {
+      "name": "toolchain",
+      "tools": ["Step 1: latexmk"]
+    }
+  ],
+  "latex-workshop.view.pdf.viewer": "tab",
+
+  // CSV
+  "csv-preview.separator": ";",
+  "csv-preview.theme": "light",
+
+  "keyboard.touchbar.enabled": false,
+
+  "java.errors.incompleteClasspath.severity": "ignore",
+  "extensions.ignoreRecommendations": false,
+  "git.confirmSync": false,
+
+  // gitlens
+  "gitlens.advanced.messages": {
+    "suppressShowKeyBindingsNotice": true
+  },
+
+  // // // // // // // // // //
+  // VIM
+
+  // "vim.normalModeKeyBindings": [
+  //   {
+  //     "before": ["leader", "e"],
+  //     "commands": ["calva.evalCurrentTopLevelFormInREPLTerminal"]
+  //   }
+  // ],
+  "vim.useCtrlKeys": true,
+
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": [";"],
+      "after": [":"]
     },
-
-    "[markdown]": {
-      "editor.wordWrap": "on",
-      "editor.quickSuggestions": false,
-      "editor.tabSize": 4
+    {
+      "before": [":"],
+      "after": [";"]
     },
-    "[DOT]": {
-      "editor.tabSize": 2
+    {
+      "before": ["<C-l>"],
+      "commands": [
+        {
+          "command": ":nohl"
+        }
+      ]
     },
-    "[html]": {
-      "editor.insertSpaces": true,
-      "editor.tabSize": 2
+    {
+      "before": ["leader", "w"],
+      "commands": [
+        {
+          "command": "workbench.action.files.save"
+        }
+      ]
     },
-
-    "markdownlint.config": {
-      "MD013": false,
-      "MD007": { "indent": 4 }
+    // smooth scrolling
+    {
+      "before": ["<C-j>"],
+      "after": ["1","0","j","z","z"]
     },
-
-    // standalone file in HTML5 format
-    "pandoc.htmlOptString": "-s -t html5",
-    "pandoc.pdfOptString": "-V geometry:margin=2.5cm,right=2.5cm",
-
-    // ignore special latex stuff for spell check
-    "cSpell.ignoreRegExpList": [
-    "\\\\\\w*(\\[.*?\\])?(\\{.*?\\})?",
-    "\\$.+?\\$"
-    ],
-
-    // Latex
-    "latex-workshop.latex.autoBuild.onSave.enabled": false,
-    "latex-workshop.latex.autoBuild.onTexChange.enabled": false,
-    "latex-workshop.chktex.enabled": true,
-
-    "latex-workshop.latex.tools": [
-      {
-        "command": "latexmk",
-        "args": [
-          "-synctex=1",
-          "-interaction=nonstopmode",
-          "-file-line-error",
-          "-pdf",
-          "%DOC%"
-        ],
-        "name": "Step 1: latexmk"
-      }
-    ],
-    "latex-workshop.latex.recipes": [
-      {
-        "name": "toolchain",
-        "tools": [
-          "Step 1: latexmk"
-        ]
-      }
-    ],
-    "latex-workshop.view.pdf.viewer": "tab",
-
-    // CSV
-    "csv-preview.separator": ";",
-    "csv-preview.theme": "light",
-
-    "keyboard.touchbar.enabled": false,
-
-    "workbench.colorTheme": "Gruvbox Dark (Hard)",
-
-    "java.errors.incompleteClasspath.severity": "ignore",
-    "cSpell.userWords": [
-      "commenters",
-      "dataset",
-      "mutex",
-      "mutexes",
-      "polysemy",
-      "preprocess",
-      "preprocessed",
-      "subproblem",
-      "unproblematic",
-      "untagged",
-      "youtube"
-    ],
-    "extensions.ignoreRecommendations": false,
-    "git.confirmSync": false,
-
-    // gitlens
-    "gitlens.advanced.messages": {
-      "suppressShowKeyBindingsNotice": true
+    {
+      "before": ["<C-k>"],
+      "after": ["1","0","k","z","z"]
     },
-    "gitlens.historyExplorer.enabled": true,
-    "gitlens.currentLine.enabled": false,
-    "gitlens.gitExplorer.files.layout": "auto",
-    "editor.multiCursorModifier": "alt",
-    "vsicons.presets.foldersAllDefaultIcon": true,
+    // visual lines
+    {
+      "before": ["j"],
+      "after": ["g","j"]
+    },
+    {
+      "before": ["k"],
+      "after": ["g","k"]
+    }
+  ],
+  "vim.insertModeKeyBindings": [
+    // {
+    //   "before": ["j", "k"],
+    //   "after": ["<Esc>"]
+    // },
+    // {
+      // not working ;-(
+      // "before": ["<C-m>"],
+      // "after": ["<CR>"]
+    // }
+  ],
+  "vim.insertModeKeyBindingsNonRecursive": [
+    // {
+      // skip one char left in insert mode because
+      // of auto completion
+      // "before": ["j","j"],
+      // "after": ["<right>"]
+    // }
 
-    // VIM
-    "vim.normalModeKeyBindingsNonRecursive": [
-      {
-        "before": [";"],
-        "after": [":"]
-      },
-      {
-        "before": [":"],
-        "after": [";"]
-      },
-      // {
-      //   "before": ["<C-j>"],
-      //   "after": ["<Esc>"]
-      // },
-      {
-        "before":["<C-l>"],
-          "commands": [
-            {
-              "command": ":nohl",
-            }
-          ]
-      },
-      {
-        "before": ["leader", "w"],
-          "commands": [
-            {
-              "command": "workbench.action.files.save",
-            }
-          ]
-      },
-    ],
-    "vim.insertModeKeyBindingsNonRecursive": [
-      {
-        // skip one char left in insert mode because
-        // of auto completion
-        "before": ["j","j"],
-        "after": ["<right>"]
-      }
-    ],
-    "vim.incsearch": true,
-    "vim.hlsearch": true,
-    "vim.cursorStylePerMode.normal" : "normal",
-    "vim.cursorStylePerMode.insert" : "line-thin",
-    "vim.cursorStylePerMode.replace" : "block-outline",
-    "vim.disableExtension": true,
-    "vim.easymotion": true,
-    "workbench.startupEditor": "newUntitledFile",
-    "workbench.iconTheme": "vscode-icons",
+  ],
+  "vim.incsearch": true,
+  "vim.hlsearch": true,
+  "vim.cursorStylePerMode.normal": "normal",
+  "vim.cursorStylePerMode.insert": "line-thin",
+  "vim.cursorStylePerMode.replace": "block-outline",
+  "vim.disableExtension": true,
+  "vim.easymotion": true,
 
-    // PYTHON
-    "python.linting.mypyEnabled": true,
-    "cSpell.language": "en,de",
-    "window.zoomLevel": 0,
-    "diffEditor.ignoreTrimWhitespace": true,
+  // PYTHON
+  "python.linting.enabled": false,
+  "python.linting.mypyEnabled": true,
+  "python.linting.lintOnSave": true,
+  "python.jediEnabled": false,
+  "python.pythonPath": "/Users/micha/miniconda3/bin/python",
 
-    "FSharp.disableFailedProjectNotifications":true,
+  "cSpell.language": "en,de",
+  "diffEditor.ignoreTrimWhitespace": true,
 
-    // Clojure
-    "calva.fmt.autoAdjustIndentOnNewLines": false,
-    "zenMode.hideStatusBar": false,
-    "workbench.fontAliasing": "auto",
-    "files.autoSave": "off",
-    "editor.fontSize": 11,
+  // Clojure
+  // "calva.fmt.autoAdjustIndentOnNewLines": false,
+  "zenMode.hideStatusBar": false,
+  "vim.easymotionMarkerFontSize": "12",
+  "vim.easymotionMarkerFontFamily": "Menlo",
+  "liveServer.settings.showOnStatusbar": false,
+  "liveServer.settings.donotVerifyTags": true,
+  "latex-workshop.latex.autoBuild.run": "never",
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "json.format.enable": true,
 
-  }
+  "printcode.fontSize": 8,
+  "printcode.autoPrint": false,
+  "gitlens.statusBar.enabled": true,
+  "gitlens.currentLine.enabled": false, // in modern version
+  "gitlens.views.repositories.files.layout": "auto",
+  "gitlens.views.fileHistory.enabled": true,
+  "gitlens.views.lineHistory.enabled": false,
+  "editor.maxTokenizationLineLength": 200000,
+  "java.configuration.checkProjectSettingsExclusions": false,
+  "vsicons.dontShowNewVersionMessage": true,
+
+  // EMMET
+  "emmet.triggerExpansionOnTab": true,
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact"
+  },
+  "workbench.colorTheme": "Nord",
+  "background.useDefault": false,
+  "background.enabled": false,
+  "vim.easymotionMarkerHeight": 18,
+  "vim.easymotionMarkerWidthPerChar": 10,
+  "vim.easymotionMarkerYOffset": 2,
+  "python.formatting.autopep8Path": "black"
+}

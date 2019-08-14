@@ -1,7 +1,7 @@
 // Place your key bindings in this file to overwrite the defaults
 [
-    // { "key": "ctrl+`",          "command": "workbench.action.focusActiveEditorGroup", "when": "terminalFocus" },
-    // { "key": "ctrl+`",          "command": "workbench.action.terminal.focus", "when": "!terminalFocus" },
+    { "key": "ctrl+`",          "command": "workbench.action.focusActiveEditorGroup", "when": "terminalFocus" },
+    { "key": "ctrl+`",          "command": "workbench.action.terminal.focus", "when": "!terminalFocus" },
 
     // PyCharm settings
     {
@@ -37,6 +37,15 @@
     {
         "key": "f9",
         "command": "-editor.debug.action.toggleBreakpoint",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+alt+r",
+        "command": "workbench.action.terminal.runSelectedText"
+    },
+    {
+        "key": "ctrl+;",
+        "command": "extension.aceJump",
         "when": "editorTextFocus"
     }
 ]

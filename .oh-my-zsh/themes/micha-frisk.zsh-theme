@@ -2,8 +2,8 @@ function box_name {
     [ -f ~/.box-name ] && cat ~/.box-name || echo ${SHORT_HOST:-$HOST}
 }
 
-PROMPT=$'
-%{$fg[blue]%}%/%{$reset_color%} $(git_prompt_info)$(bzr_prompt_info)%{$fg[white]%}[%n@$(box_name)]%{$reset_color%} %{$fg[white]%}[%T]%{$reset_color%}
+# PROMPT=$'%{$fg[blue]%}%/%{$reset_color%} $(git_prompt_info)$(bzr_prompt_info)%{$fg[white]%}[%n@$(box_name)]%{$reset_color%} %{$fg[white]%}[%T]%{$reset_color%}
+PROMPT=$'%{$fg[blue]%}%/%{$reset_color%} $(git_prompt_info)$fg[white]%}[%T]%{$reset_color%}
 %{$fg[blue]%}▶%{$reset_color%} '
 
 PROMPT2="%{$fg_bold[black]%}%_> %{$reset_color%}"

@@ -48,7 +48,7 @@ set showmatch       " Show matching brackets.
 set incsearch
 set nohlsearch
 set ruler           " show cursor at bottom
-"set cursorline      " highlight current line
+set cursorline      " highlight current line
 
 set foldmethod=syntax
 set foldlevelstart=20
@@ -62,3 +62,16 @@ set wildmode=list:longest,list:full
 set wildignore+=*.o,*.obj,*.so,*.a
 
 set backspace=indent,eol,start  " allow backspacing over everything in insert mode
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" KEYMAPPING
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" map : to ; because it is far easier to type and ; isn;t used anyway (only
+" for backward search in current line)
+noremap ; :
+nnoremap : ;
+
+"This unsets the "last search pattern" register by hitting return
+"" see:https://stackoverflow.com/a/662914
+nnoremap <C-L> :noh<CR><C-L>

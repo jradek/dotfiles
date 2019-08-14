@@ -6,7 +6,7 @@ let g:netrw_liststyle = 3       " tree view
 " let g:netrw_winsize = 30
 " let g:netrw_altv=1              " open splits to right
 let g:netrw_banner=0            " disable banner
-
+            
 
 """""""""""""""""""""""""""""""""""""""""""""""""
 " airline
@@ -14,7 +14,7 @@ let g:airline#extentions#tabline#enabled = 1
 let g:airline#extentions#tabline#show_buffers = 0
 let g:airline#extentions#tabline#tab_nr_type = 1
 let g:airline#extentions#tabline#fnamemod = ":t"
-let g:airline_theme = 'solarized'
+let g:airline_theme = 'nord'
 
 let g:airline#extensions#keymap#enabled = 0
 let g:airline_detect_spelllang = 0
@@ -27,6 +27,7 @@ let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = ''
 " let g:airline_symbols.linenr = 'Ξ'
 let g:airline_powerline_fonts = 1
+let g:airline#extensions#ale#enabled = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""
 " Use deoplete.
@@ -40,6 +41,29 @@ let g:python3_host_prog = '/Users/micha/miniconda3/bin/python3'
 " inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
 " <TAB>: completion.
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+
+"""""""""""""""""""""""""""""""""""""""""""""""""
+" ALE
+let g:ale_sign_error = '>>'
+let g:ale_sign_warning = '--'
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_insert_leave = 0
+let g:ale_lint_on_enter = 1
+let g:ale_set_loclist = 1
+let g:ale_set_quickfix = 0
+let g:ale_open_list = 1
+let g:ale_list_window_size = 5
+let g:ale_lint_delay = 2000
+
+let g:ale_linters = {
+\   'python': ['flake8', 'mypy', 'pylint']
+\}
+
+let g:ale_fixers = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\   'python': ['black']
+\}
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""
 " NERDTree

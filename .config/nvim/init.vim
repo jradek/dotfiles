@@ -17,7 +17,7 @@ Plug 'mhartington/oceanic-next'
 
 Plug 'junegunn/fzf.vim'
 
-Plug 'bronson/vim-trailing-whitespace'
+" Plug 'bronson/vim-trailing-whitespace'
 Plug 'tpope/vim-markdown', {'for': 'markdown'}   " markdown syntax highlight
 " Plug 'scrooloose/nerdtree'
 Plug 'Yggdroot/indentLine'  " indention lines
@@ -31,6 +31,8 @@ Plug 'tpope/vim-commentary'  "commenting with gcc command
 Plug 'tpope/vim-surround'
 Plug 'kien/rainbow_parentheses.vim'
 
+Plug 'dense-analysis/ale'
+Plug 'lervag/vimtex'
 " Initialize plugin system
 call plug#end()
 

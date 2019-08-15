@@ -51,7 +51,7 @@ let g:ale_lint_on_insert_leave = 0
 let g:ale_lint_on_enter = 1
 let g:ale_set_loclist = 1
 let g:ale_set_quickfix = 0
-let g:ale_open_list = 1
+" let g:ale_open_list = 1
 let g:ale_list_window_size = 5
 let g:ale_lint_delay = 2000
 
@@ -64,6 +64,13 @@ let g:ale_fixers = {
 \   'python': ['black']
 \}
 
+"""""""""""""""""""""""""""""""""""""""""""""""""
+" vimtex
+let g:tex_flavor  = 'latex'
+let g:vimtex_compiler_latexmk = {
+    \ 'continuous' : 0,
+    \ 'executable' : 'latexmk'
+    \}
 
 """""""""""""""""""""""""""""""""""""""""""""""""
 " NERDTree

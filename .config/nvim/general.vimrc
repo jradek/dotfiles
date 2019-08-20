@@ -16,6 +16,8 @@ set fileformats=unix,dos,mac
 set list listchars=tab:»·,trail:·,nbsp:·,eol:¬
 set conceallevel=0  " show all characters
 
+set noshowmode      " get rid of unnecessary, -- INSERT -- in status line
+
 """"""""""""""""""
 " color scheme stuff
 set t_Co=256 " Explicitly tell vim that the terminal supports 256 colors

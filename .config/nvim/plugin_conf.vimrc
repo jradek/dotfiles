@@ -6,28 +6,36 @@ let g:netrw_liststyle = 3       " tree view
 " let g:netrw_winsize = 30
 " let g:netrw_altv=1              " open splits to right
 let g:netrw_banner=0            " disable banner
-            
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""
+"in lightline
+let g:lightline = {
+    \ 'colorscheme': 'nord',
+    \ }
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""
 " airline
-let g:airline#extentions#tabline#enabled = 1
-let g:airline#extentions#tabline#show_buffers = 0
-let g:airline#extentions#tabline#tab_nr_type = 1
-let g:airline#extentions#tabline#fnamemod = ":t"
-let g:airline_theme = 'nord'
+" let g:airline#extentions#tabline#enabled = 1
+" let g:airline#extentions#tabline#show_buffers = 0
+" let g:airline#extentions#tabline#tab_nr_type = 1
+" let g:airline#extentions#tabline#fnamemod = ":t"
+" let g:airline_theme = 'nord'
 
-let g:airline#extensions#keymap#enabled = 0
-let g:airline_detect_spelllang = 0
+" let g:airline#extensions#keymap#enabled = 0
+" let g:airline_detect_spelllang = 0
 
-if !exists('g:airline_symbols')
-    let g:airline_symbols = {}
-endif
+" if !exists('g:airline_symbols')
+"     let g:airline_symbols = {}
+" endif
 
-let g:airline_symbols.readonly = ''
-let g:airline_symbols.linenr = ''
-" let g:airline_symbols.linenr = 'Ξ'
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#ale#enabled = 1
+" let g:airline_symbols.readonly = ''
+" let g:airline_symbols.linenr = ''
+" " let g:airline_symbols.linenr = 'Ξ'
+" let g:airline_powerline_fonts = 1
+" let g:airline#extensions#ale#enabled = 1
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""
 " Use deoplete.
@@ -41,6 +49,7 @@ let g:python3_host_prog = '/Users/micha/miniconda3/bin/python3'
 " inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
 " <TAB>: completion.
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""
 " ALE
@@ -64,13 +73,15 @@ let g:ale_fixers = {
 \   'python': ['black']
 \}
 
+
 """""""""""""""""""""""""""""""""""""""""""""""""
 " vimtex
 let g:tex_flavor  = 'latex'
 let g:vimtex_compiler_latexmk = {
-    \ 'continuous' : 0,
+    \ 'continuous' : 1,
     \ 'executable' : 'latexmk'
     \}
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""
 " NERDTree
@@ -79,6 +90,7 @@ let g:vimtex_compiler_latexmk = {
 " let file_name = expand("%:p")
 " nnoremap <C-e> :NERDTreeToggle<CR>
 
+
 """""""""""""""""""""""""""""""""""""""""""""""""
 " fzf
 nnoremap <silent> ,b :Buffers<CR>
@@ -86,7 +98,15 @@ nnoremap <silent> ,f :Files<CR>
 nnoremap <silent> ,l :Lines<CR>
 set rtp+=~/install/fzf
 
+
 """""""""""""""""""""""""""""""""""""""""""""""""
 " vim markdown
 let g:markdown_fenced_languages = ['vim', 'python']
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""
+" indentline 
+let g:indentLine_fileTypeExclude = ['markdown']
+let g:indentLine_setConceal = 0
+

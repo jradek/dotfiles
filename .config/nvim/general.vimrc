@@ -14,6 +14,7 @@ set fileencodings=utf-8
 set fileformats=unix,dos,mac
 
 set list listchars=tab:»·,trail:·,nbsp:·,eol:¬
+set conceallevel=0  " show all characters
 
 """"""""""""""""""
 " color scheme stuff
@@ -26,6 +27,7 @@ set background=dark
 if (has("termguicolors"))
  set termguicolors
 endif
+
 "" OCEANIC
 " let g:oceanic_next_terminal_bold = 1
 " let g:oceanic_next_terminal_italic = 1

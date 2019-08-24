@@ -37,6 +37,8 @@ Plug 'kien/rainbow_parentheses.vim'
 Plug 'dense-analysis/ale'
 Plug 'lervag/vimtex'
 
+Plug 'tpope/vim-fugitive'
+
 call plug#end()
 
 source $HOME/.config/nvim/general.vimrc

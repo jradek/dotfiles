@@ -14,6 +14,12 @@
   "editor.suggestSelection": "first",
   "editor.fontSize": 15, // 15
   "editor.minimap.enabled": false,
+  "editor.acceptSuggestionOnEnter": "off",
+  "editor.quickSuggestions": {
+    "other": true,
+    "comments": false,
+    "strings": false
+  },
 
   // ***************
   // ** WORKBENCH **
@@ -36,10 +42,14 @@
   "workbench.activityBar.visible": true,
   "workbench.fontAliasing": "auto",
   "workbench.startupEditor": "newUntitledFile",
-  "workbench.colorCustomizations": {
-    "statusBar.background": "#0059ffa4",
-    "[Cobalt2]": {"gitDecoration.ignoredResourceForeground": "#706e6e"}
-  },
+  // "workbench.colorCustomizations": {
+  //   "[Cobalt2]": {
+  //     "gitDecoration.ignoredResourceForeground": "#706e6e"
+  //   },
+  //   "statusBar.background": "#005f5f",
+  //   "statusBar.noFolderBackground": "#005f5f",
+  //   "statusBar.debuggingBackground": "#005f5f"
+  // },
   "workbench.editor.labelFormat": "short",
 
   "terminal.integrated.fontSize": 15,
@@ -70,7 +80,8 @@
   },
   "[javascript]": {
     "editor.tabSize": 2,
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[latex]": {
     "editor.fontFamily": "'Courier Prime', Menlo, Monaco, monospace",
@@ -231,13 +242,20 @@
   "vim.cursorStylePerMode.replace": "block-outline",
   "vim.disableExtension": true,
   "vim.easymotion": true,
+  "vim.easymotionMarkerHeight": 18,
+  "vim.easymotionMarkerWidthPerChar": 10,
+  "vim.easymotionMarkerYOffset": 2,
 
   // PYTHON
-  "python.linting.enabled": false,
+  "python.linting.enabled": true,
+  "python.linting.pylintEnabled": false,
+  "python.linting.flake8Enabled": true,
+  "python.linting.flake8Args": ["--ignore=E501"],
   "python.linting.mypyEnabled": true,
   "python.linting.lintOnSave": true,
-  "python.jediEnabled": false,
+  "ython.jediEnabled": false,
   "python.pythonPath": "/Users/micha/miniconda3/bin/python",
+  "python.formatting.autopep8Path": "black",
 
   "cSpell.language": "en,de",
   "diffEditor.ignoreTrimWhitespace": true,
@@ -272,8 +290,8 @@
   "workbench.colorTheme": "Nord",
   "background.useDefault": false,
   "background.enabled": false,
-  "vim.easymotionMarkerHeight": 18,
-  "vim.easymotionMarkerWidthPerChar": 10,
-  "vim.easymotionMarkerYOffset": 2,
-  "python.formatting.autopep8Path": "black"
+  "vim.neovimPath": "/usr/local/bin/nvim",
+  "vim.enableNeovim": true,
+  "editor.folding": false,
+  "python.jediEnabled": false,
 }

@@ -12,8 +12,10 @@ set laststatus=2
 set encoding=utf-8
 set fileencodings=utf-8
 set fileformats=unix,dos,mac
+set scrolloff=5
 
-set list listchars=tab:»·,trail:·,nbsp:·,eol:¬
+" set list listchars=tab:»·,trail:·,nbsp:·,eol:¬
+set list listchars=tab:»·,trail:·,nbsp:·
 set conceallevel=0  " show all characters
 
 set noshowmode      " get rid of unnecessary, -- INSERT -- in status line
@@ -64,6 +66,32 @@ set wildmode=list:longest,list:full
 set backspace=indent,eol,start
 
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" create backup of file with time stamp
+"
+" see also: https://superuser.com/a/1135296
+
+function! BackupDir()
+   set backup
+
+   if has('win32') || has('win64')
+      let l:backupdir=$VIM.'/backup/'.
+               \substitute(expand('%:p:h'), '\:', '~', '')
+   else
+      let l:backupdir=$HOME.'/.local/share/nvim/backup/'.
+               \substitute(expand('%:p:h'), '^'.$HOME, '~', '')
+   endif
+
+   if !isdirectory(l:backupdir)
+      call mkdir(l:backupdir, 'p', 0700)
+   endif
+
+   let &backupdir=l:backupdir
+   let &backupext=strftime('_%Y-%m-%d_%H-%M-%S')
+endfunction
+
+
+
 " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " encryption/decryption
 "
@@ -75,9 +103,12 @@ set backspace=indent,eol,start
 augroup encrypted
     au!
 
+    " create a backup of the encrypted file, just in case writing fails
+    autocmd BufReadPre,FileReadPre *.gpg call BackupDir()
+
     " Avoid writing to ~/.viminfo while editing
     autocmd BufReadPre,FileReadPre *.gpg set viminfo=
-    autocmd BufReadPre,FileReadPre *.gpg set noswapfile noundofile nobackup
+    autocmd BufReadPre,FileReadPre *.gpg set noswapfile noundofile "nobackup
     autocmd BufReadPre,FileReadPre *.gpg set bin
     autocmd BufReadPre,FileReadPre *.gpg let ch_save = &ch|set ch=2
 

@@ -63,13 +63,36 @@ HIST_STAMPS="yyyy-mm-dd"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git osx vi-mode)
+plugins=(git osx vi-mode zsh-syntax-highlighting zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
 #################################################################################
 # User configuration
 #
+
+# auto suggestions
+ZSH_AUTOSUGGEST_STRATEGY=(history)
+# ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#ff00ff,underline"
+bindkey '^ ' autosuggest-accept # complete with CTRL + space
+
+# ---------------------- MAKE PAINFULLY SLOW PASTE FAST ---------------------- #
+
+# https://github.com/zsh-users/zsh-autosuggestions/issues/238#issuecomment-389324292
+
+# This speeds up pasting with autosuggest
+# https://github.com/zsh-users/zsh-autosuggestions/issues/238
+pasteinit() {
+  OLD_SELF_INSERT=${${(s.:.)widgets[self-insert]}[2,3]}
+  zle -N self-insert url-quote-magic
+}
+
+pastefinish() {
+  zle -N self-insert $OLD_SELF_INSERT
+}
+zstyle :bracketed-paste-magic paste-init pasteinit
+zstyle :bracketed-paste-magic paste-finish pastefinish
+
 
 # edit command line in editor by hitting CTRL X E
 autoload -U edit-command-line

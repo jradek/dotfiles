@@ -1,0 +1,4 @@
+collect-on-mac.sh
+dotfiles_*.tar.gz
+
+**/*.bak

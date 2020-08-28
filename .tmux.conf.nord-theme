@@ -18,8 +18,9 @@
 
 # Appropriate terminal colors
 # set -g default-terminal "xterm-256color"
-set-option -g default-terminal "screen-256color"
-set -ga terminal-overrides ",xterm-256color:Tc"
+# set-option -g default-terminal "screen-256color"
+set-option -g default-terminal "xterm-256color"
+# set -ga terminal-overrides ",xterm-256color:Tc"
 
 # Start tabs at index 1
 set -g base-index 1
@@ -114,6 +115,7 @@ set -g @plugin "arcticicestudio/nord-tmux"
 set -g @plugin 'tmux-plugins/tmux-sensible'
 set -g @plugin 'tmux-plugins/tmux-resurrect'
 set -g @plugin 'tmux-plugins/tmux-continuum'
+set -g @plugin 'tmux-plugins/tmux-yank'
 
 
 ###################################################################

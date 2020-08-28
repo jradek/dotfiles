@@ -6,19 +6,22 @@ export GRADLE_HOME="/Users/micha/install/gradle/gradle-5.0"
 export PATH="$GRADLE_HOME/bin:$PATH"
 #export PATH="/Users/micha/install/gnat2016/bin:$PATH"
 export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
-export PATH="$PATH:/Users/micha/install/leinigen"
+# export PATH="$PATH:/Users/micha/install/leinigen"
+# export PATH="$PATH:/Users/micha/install/GNAT/2019/bin"
 
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/micha/.oh-my-zsh
 
-export LC_ALL=en_US.UTF-8
+# export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 #ZSH_THEME="robbyrussell"
-ZSH_THEME="micha-frisk"
+# ZSH_THEME="micha-frisk"
 #ZSH_THEME="avit"
+ZSH_THEME=powerlevel10k/powerlevel10k
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -63,7 +66,8 @@ HIST_STAMPS="yyyy-mm-dd"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git osx vi-mode zsh-syntax-highlighting zsh-autosuggestions)
+# plugins=(git osx vi-mode zsh-syntax-highlighting zsh-autosuggestions)
+plugins=(git osx vi-mode)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -72,7 +76,7 @@ source $ZSH/oh-my-zsh.sh
 #
 
 # auto suggestions
-ZSH_AUTOSUGGEST_STRATEGY=(history)
+# ZSH_AUTOSUGGEST_STRATEGY=(history)
 # ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#ff00ff,underline"
 bindkey '^ ' autosuggest-accept # complete with CTRL + space
 
@@ -90,9 +94,13 @@ pasteinit() {
 pastefinish() {
   zle -N self-insert $OLD_SELF_INSERT
 }
-zstyle :bracketed-paste-magic paste-init pasteinit
-zstyle :bracketed-paste-magic paste-finish pastefinish
+# zstyle :bracketed-paste-magic paste-init pasteinit
+# zstyle :bracketed-paste-magic paste-finish pastefinish
 
+
+# https://github.com/zsh-users/zsh-autosuggestions/issues/351
+# ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(bracketed-paste accept-line)
+# ----------------------------------------------------------------------------- #
 
 # edit command line in editor by hitting CTRL X E
 autoload -U edit-command-line
@@ -204,3 +212,5 @@ fi
 # unset __conda_setup
 # <<< conda initialize <<<
 
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

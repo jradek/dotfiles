@@ -16,41 +16,34 @@ let g:lightline = {
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""
-" airline
-" let g:airline#extentions#tabline#enabled = 1
-" let g:airline#extentions#tabline#show_buffers = 0
-" let g:airline#extentions#tabline#tab_nr_type = 1
-" let g:airline#extentions#tabline#fnamemod = ":t"
-" let g:airline_theme = 'nord'
+" SuperTab
+"
+" change traversal from top to bottom
+let g:SuperTabDefaultCompletionType = "<c-n>"
+" let g:SuperTabContextDefaultCompletionType = "<c-n>"
 
-" let g:airline#extensions#keymap#enabled = 0
-" let g:airline_detect_spelllang = 0
-
-" if !exists('g:airline_symbols')
-"     let g:airline_symbols = {}
-" endif
-
-" let g:airline_symbols.readonly = ''
-" let g:airline_symbols.linenr = ''
-" " let g:airline_symbols.linenr = 'Ξ'
-" let g:airline_powerline_fonts = 1
-" let g:airline#extensions#ale#enabled = 1
+"""""""""""""""""""""""""""""""""""""""""""""""""
+" limelight
+let g:limelight_conceal_ctermfg = 'gray'
+let g:limelight_conceal_ctermfg = 240
+let g:limelight_conceal_guifg = 'DarkGray'
+let g:limelight_conceal_guifg = '#777777'
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""
 " Use deoplete.
+
 set completeopt-=preview
 let g:deoplete#enable_at_startup = 1
-let g:python_host_prog = '/usr/local/bin/python2'
-" let g:python3_host_prog = '/Users/micha/miniconda3/bin/python3'
-let g:python3_host_prog = '/usr/local/bin/python3'
+
+" let g:python_host_prog = '/usr/local/bin/python2'
+let g:python3_host_prog = '/usr/bin/python3'
 
 " use ctrl-j / ctrl-k for navigation
 " inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
 " inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
 " <TAB>: completion.
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-
+" inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
 """""""""""""""""""""""""""""""""""""""""""""""""
 " ALE
@@ -65,14 +58,19 @@ let g:ale_set_quickfix = 0
 let g:ale_list_window_size = 5
 let g:ale_lint_delay = 2000
 
+let g:ale_fix_on_save = 1
+
 let g:ale_linters = {
 \   'python': ['flake8', 'mypy', 'pylint']
 \}
 
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
-\   'python': ['black']
+\   'python': ['black'],
+\   'css': ['prettier'],
+\   'html': ['prettier'],
 \}
+
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""
@@ -107,7 +105,38 @@ autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""
-" indentline 
+" indentline
 let g:indentLine_fileTypeExclude = ['markdown']
 let g:indentLine_setConceal = 0
 
+"""""""""""""""""""""""""""""""""""""""""""""""""
+" vim wiki
+" see: https://gist.github.com/maikeldotuk/54a91c21ed9623705fdce7bab2989742
+let g:vimwiki_list = [{'path': '~/vimwiki/',
+                      \ 'path_html': '~/vimwiki_html/',
+                      \ 'syntax': 'markdown',
+                      \ 'ext': '.md',
+                      \ 'template_path': '~/.config/nvim/',
+                      \ 'template_default': 'vimwiki_github_template',
+                      \ 'template_ext': '.html5',
+                      \ 'custom_wiki2html': '~/.config/nvim/vimwiki_to_html5.sh' }]
+
+"""""""""""""""""""""""""""""""""""""""""""""""""
+" easy motion
+map <Leader> <Plug>(easymotion-prefix)
+let g:EasyMotion_do_mapping = 0 " Disable default mappings
+
+" Jump to anywhere you want with minimal keystrokes, with just one key binding.
+" `s{char}{label}`
+nmap <Leader>s <Plug>(easymotion-overwin-f)
+" or
+" `s{char}{char}{label}`
+" Need one more keystroke, but on average, it may be more comfortable.
+" nmap s <Plug>(easymotion-overwin-f2)
+
+" Turn on case-insensitive feature
+let g:EasyMotion_smartcase = 1
+
+" JK motions: Line motions
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)

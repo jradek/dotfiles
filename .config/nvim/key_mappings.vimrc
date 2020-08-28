@@ -12,15 +12,33 @@ nnoremap <C-L> :noh<CR><C-L>
 nnoremap ; :
 nnoremap : ;
 
+" switch buffers
+nnoremap <TAB> :bnext<CR>
+nnoremap <s-TAB> :bprevious<CR>
+
+" change leader from \ to <space>
+nnoremap <Space> <Nop>
+let mapleader=" "
+
 " simple save
-" BTW: leader key is \
 nnoremap <leader>w :w<CR>
 
-" alternate esc
-inoremap jk <esc>
+" move visual lines
+noremap <silent> k gk
+noremap <silent> j gj
 
-" move one left in insert mode, usefull in autocompletion with brackets
-inoremap jj <right>
+if exists('g:vscode')
+    " VSCode extension
+else
+    " ordinary neovim
+    " alternate esc
+    inoremap jk <esc>
+    inoremap kj <esc>
+
+    " move one left in insert mode, usefull in autocompletion with brackets
+    " inoremap jj <right>
+endif
+
 
 " smooth scrolling
 nnoremap <C-j> 10jzz
@@ -29,4 +47,3 @@ nnoremap <C-k> 10kzz
 " skip over closing parenthesis in insert mode
 " see: https://vim.fandom.com/wiki/Automatically_append_closing_characters
 " inoremap <expr> )  strpart(getline('.'), col('.')-1, 1) == ")" ? "\<Right>" : ")"
-
